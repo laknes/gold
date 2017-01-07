@@ -799,11 +799,11 @@ local function unlock_group_bots(msg, data, target)
   end
   local group_bots_lock = data[tostring(target)]['settings']['lock_bots']
   if group_bots_lock == 'no' then
-    return " | "..msg.from.id.. "|Turned off bot protection of |"..msg.to.print_name.." | "
+    return " | "..msg.from.id.. "|" Turned off bot protection of "| "..msg.to.print_name.." | "
   else
     data[tostring(target)]['settings']['lock_bots'] = 'no'
     save_data(_config.moderation.data, data)
-    return " | "..msg.from.id.. "Turned off bots protection of |"..msg.to.print_name.." | "
+    return " | "..msg.from.id.. |" Turned off bots protection of | "..msg.to.print_name.." | "
   end
 end
 
@@ -827,11 +827,11 @@ local function unlock_group_contacts(msg, data, target)
   end
   local group_contacts_lock = data[tostring(target)]['settings']['lock_contacts']
   if group_contacts_lock == 'no' then
-    return " | "..msg.from.id.. "| Turned off contact posting of | "..msg.to.print_name.." | "
+    return " | "..msg.from.id.. |" Turned off contact posting of | "..msg.to.print_name.." | "
   else
     data[tostring(target)]['settings']['lock_contacts'] = 'no'
     save_data(_config.moderation.data, data)
-    return " | "..msg.from.id.. "| Turned off contact posting of | "..msg.to.print_name.." | "
+    return " | "..msg.from.id.. |" Turned off contact posting of | "..msg.to.print_name.." | "
   end
 end
 
@@ -841,11 +841,11 @@ local function enable_strict_rules(msg, data, target)
   end
   local group_strict_lock = data[tostring(target)]['settings']['strict']
   if group_strict_lock == 'yes' then
-    return " | "..msg.from.id.. "| Turned on strict settings of | "..msg.to.print_name.." | "
+    return " | "..msg.from.id.. |" Turned on strict settings of | "..msg.to.print_name.." | "
   else
     data[tostring(target)]['settings']['strict'] = 'yes'
     save_data(_config.moderation.data, data)
-    return " | "..msg.from.id.. "| Turned on strict settings of | "..msg.to.print_name.." | "
+    return " | "..msg.from.id.. |" Turned on strict settings of | "..msg.to.print_name.." | "
   end
 end
 
@@ -855,11 +855,11 @@ local function disable_strict_rules(msg, data, target)
   end
   local group_strict_lock = data[tostring(target)]['settings']['strict']
   if group_strict_lock == 'no' then
-    return " | "..msg.from.id.. "| Turned off strict settings of | "..msg.to.print_name.." | "
+    return " | "..msg.from.id.. |" Turned off strict settings of | "..msg.to.print_name.." | "
   else
     data[tostring(target)]['settings']['strict'] = 'no'
     save_data(_config.moderation.data, data)
-    return " | "..msg.from.id.. "| Turned off strict settings of | "..msg.to.print_name.." | "
+    return " | "..msg.from.id.. |" Turned off strict settings of | "..msg.to.print_name.." | "
   end
 end
 --End supergroup locks
@@ -1035,7 +1035,7 @@ function show_supergroup_settingsmod(msg, target)
   local settings = data[tostring(target)]['settings']
   local text = "Supergroup settings\n"..
   "➖➖➖➖➖➖➖\n"..
-"🔹Lock #link : "..settings.lock_link.."\n"..
+"🔹Lock #link : "..settings.lock_link.."\n"
 "🔹Lock #contact: ["..settings.lock_contacts.."]\n"..
 "🔹Lock #Arabic: ["..settings.lock_arabic.."]\n"..
 "🔹Lock #Member: ["..settings.lock_member.."]\n"..
@@ -1074,7 +1074,7 @@ function show_supergroup_settingsmod(msg, target)
 "➖➖➖➖➖➖➖\n"..
 "🗳Your Information \n\n"..
 "⛓ #Name : "..msg.from.print_name.."\n"..
-"⛓ #Username : @"..(msg.from.username or "").."\n"..
+"⛓ #Username : "..(msg.from.username or "").."\n"..
 "⛓ #ID : "..msg.from.id.."\n"..
 "➖➖➖➖➖➖➖\n"..
 "⚖Bot Information \n\n"..
@@ -2675,7 +2675,7 @@ local function run(msg, matches)
 		end
 
 		if matches[1] == 'help' and not is_owner(msg) then
-			text = "برای شما مجاز نیست"
+			text = "Send /superhelp in private @ElementTG Or wait for group owner"
 			reply_msg(msg.id, text, ok_cb, false)
 		elseif matches[1] == 'help' and is_owner(msg) then
 			local name_log = user_print_name(msg.from)
